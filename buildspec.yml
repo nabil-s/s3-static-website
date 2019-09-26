@@ -8,6 +8,10 @@ phases:
     - echo 'Installing AWS CLI'
     - pip install awscli
 
+  pre_build:
+    commands:
+      - echo 'This is pre-build stage'
+
   build:
     commands:
       - echo "Syncing to AWS S3 bucket $S3_BUCKET_NAME"
