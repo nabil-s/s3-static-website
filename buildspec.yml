@@ -1,0 +1,18 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      python: 3.7
+    commands:
+    - echo 'Install AWS CLI'
+    - pip install awscli
+
+  sync to bucket:
+    commands:
+      - echo "Syncing to AWS S3 bucket $S3_BUCKET_NAME"
+      - aws s3 sync . s3://$S3_BUCKET_NAME
+  
+  post_build:
+    commands:
+      - echo 'Static site is updated'
